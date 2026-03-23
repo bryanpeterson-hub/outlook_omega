@@ -58,8 +58,8 @@
             </ul>
         </aside>
 
-        <section class="w-80 bg-white border-r border-gray-200 flex flex-col shrink-0 overflow-y-auto">
-            <div class="p-3 border-b border-gray-200 font-semibold text-xs flex gap-4">
+        <section class="w-80 bg-white border-r border-gray-200 flex flex-col shrink-0 overflow-y-auto custom-scrollbar">
+            <div class="p-3 border-b border-gray-200 font-semibold text-xs flex gap-4 sticky top-0 bg-white z-10">
                 <span class="border-b-2 border-blue-600 pb-1">Focused</span>
                 <span class="text-gray-400">Other</span>
             </div>
@@ -67,8 +67,8 @@
             <div id="email-item" onclick="openEmail()" class="p-4 border-b border-gray-100 cursor-pointer hover:bg-gray-50 flex flex-col gap-1 relative">
                 <div id="unread-indicator" class="unread-dot absolute left-1 top-6"></div>
                 <div class="flex justify-between items-center">
-                    <span id="sender-name" class="font-bold text-sm text-blue-600">TE.V.A. - TE Connectivity</span>
-                    <span class="text-xs text-gray-400">10:45 AM</span>
+                    <span id="sender-name" class="font-bold text-sm text-blue-600">TE Store</span>
+                    <span class="text-xs text-blue-600 font-bold">10:45 AM</span>
                 </div>
                 <div class="text-xs font-semibold truncate">Implementation Phase: STRADA Whisper 100 Ohm</div>
                 <div class="text-xs text-gray-500 line-clamp-2">Access your technical integration kit and thermal modeling data.</div>
@@ -76,26 +76,55 @@
 
             <div class="p-4 border-b border-gray-100 cursor-pointer hover:bg-gray-50 flex flex-col gap-1 opacity-70">
                 <div class="flex justify-between items-center">
-                    <span class="font-semibold text-sm text-gray-800">David Henderson (TE)</span>
+                    <span class="font-semibold text-sm text-gray-800 truncate">TE.V.A. - TE Connectivity's Virtual Assistant</span>
+                    <span class="text-xs text-gray-400 shrink-0 ml-2">Yesterday</span>
+                </div>
+                <div class="text-xs truncate">Following up: STRADA Whisper 100 Ohm Specs for Omega Aerospace HALE Project</div>
+            </div>
+
+            <div class="p-4 border-b border-gray-100 cursor-pointer hover:bg-gray-50 flex flex-col gap-1 opacity-70">
+                <div class="flex justify-between items-center">
+                    <span class="font-semibold text-sm text-gray-800">Marcus Vance</span>
                     <span class="text-xs text-gray-400">Yesterday</span>
                 </div>
-                <div class="text-xs truncate">Following up: STRADA Whisper 100 Ohm Specs...</div>
+                <div class="text-xs truncate">RE: Airframe structural tolerance review</div>
+                <div class="text-xs text-gray-500 line-clamp-1">Lauren, I've attached the latest CAD models for the payload bay...</div>
+            </div>
+
+            <div class="p-4 border-b border-gray-100 cursor-pointer hover:bg-gray-50 flex flex-col gap-1 opacity-70">
+                <div class="flex justify-between items-center">
+                    <span class="font-semibold text-sm text-gray-800">IT Security & Compliance</span>
+                    <span class="text-xs text-gray-400">Tuesday</span>
+                </div>
+                <div class="text-xs truncate">Action Required: Annual Data Handling Certification</div>
+                <div class="text-xs text-gray-500 line-clamp-1">Please complete your mandatory training by end of month.</div>
+            </div>
+
+            <div class="p-4 border-b border-gray-100 cursor-pointer hover:bg-gray-50 flex flex-col gap-1 opacity-70">
+                <div class="flex justify-between items-center">
+                    <span class="font-semibold text-sm text-gray-800">Finance Dept</span>
+                    <span class="text-xs text-gray-400">Monday</span>
+                </div>
+                <div class="text-xs truncate">Q3 R&D Budget Allocation - Approved</div>
+                <div class="text-xs text-gray-500 line-clamp-1">The funding for the new sensor array prototypes has been cleared.</div>
             </div>
 
             <div class="p-4 border-b border-gray-100 cursor-pointer hover:bg-gray-50 flex flex-col gap-1 opacity-70">
                 <div class="flex justify-between items-center">
                     <span class="font-semibold text-sm text-gray-800">Internal: HALE Project Lead</span>
-                    <span class="text-xs text-gray-400">Yesterday</span>
+                    <span class="text-xs text-gray-400">Oct 24</span>
                 </div>
                 <div class="text-xs truncate">UAV Wing Stress Test Results - Revision 4</div>
+                <div class="text-xs text-gray-500 line-clamp-1">Team, the wind tunnel data is looking much better after the dihedral adjustment.</div>
             </div>
 
             <div class="p-4 border-b border-gray-100 cursor-pointer hover:bg-gray-50 flex flex-col gap-1 opacity-70">
                 <div class="flex justify-between items-center">
                     <span class="font-semibold text-sm text-gray-800">FAA Compliance Office</span>
-                    <span class="text-xs text-gray-400">Oct 24</span>
+                    <span class="text-xs text-gray-400">Oct 22</span>
                 </div>
                 <div class="text-xs truncate">Submission #8821: High-Altitude Testing Protocols</div>
+                <div class="text-xs text-gray-500 line-clamp-1">Your preliminary flight paths have been received and are under review.</div>
             </div>
         </section>
 
@@ -104,15 +133,15 @@
                 <div class="flex justify-between items-start mb-4">
                     <h2 class="text-xl font-semibold">Implementation Phase: STRADA Whisper 100 Ohm</h2>
                     <div class="flex gap-4 text-gray-500">
-                        <i class="fas fa-reply cursor-pointer hover:text-blue-600" onclick="showReplyBox()"></i>
-                        <i class="fas fa-reply-all"></i>
-                        <i class="fas fa-share-square"></i>
+                        <i class="fas fa-reply cursor-pointer hover:text-blue-600" onclick="showReplyBox()" title="Reply"></i>
+                        <i class="fas fa-reply-all cursor-pointer hover:text-blue-600" title="Reply All"></i>
+                        <i class="fas fa-share-square cursor-pointer hover:text-blue-600" title="Forward"></i>
                     </div>
                 </div>
                 <div class="flex items-center gap-3">
                     <div class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 font-bold border border-orange-200">TE</div>
                     <div>
-                        <div class="text-sm font-bold">TE.V.A. - TE Connectivity's Virtual Assistant <span class="text-gray-400 font-normal ml-2">&lt;support@te.com&gt;</span></div>
+                        <div class="text-sm font-bold">TE Store <span class="text-gray-400 font-normal ml-2">&lt;shop@te.com&gt;</span></div>
                         <div class="text-xs text-gray-500">To: Lauren Bailey &lt;lauren.bailey@omegaaero.com&gt;</div>
                     </div>
                 </div>
@@ -121,7 +150,7 @@
             <div id="thread" class="flex-1 overflow-y-auto p-0 flex flex-col">
                 <div id="original-email" class="max-w-[600px] mx-auto bg-white border border-gray-100 shadow-sm my-4">
                     <div class="p-6 text-center border-b border-gray-50">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/TE_Connectivity_logo.svg" alt="TE Logo" class="h-10 mx-auto">
+                        <img src="/TE_Connectivity_logo_NEW.png" alt="TE Logo" class="h-10 mx-auto object-contain">
                     </div>
                     
                     <div class="p-8">
@@ -131,7 +160,7 @@
 
                         <div class="flex gap-6 border-t border-b border-dashed border-gray-300 py-6 mb-6">
                             <div class="w-1/2">
-                                <img src="https://i.ibb.co/Lkhm729/STRADA-hero-product-master.png" alt="STRADA Whisper" class="w-full rounded shadow-sm">
+                                <img src="/STRADA hero-product-master.avif" alt="STRADA Whisper" class="w-full rounded shadow-sm object-cover">
                             </div>
                             <div class="w-1/2">
                                 <h3 class="font-bold text-lg mb-2">STRADA Whisper</h3>
@@ -160,7 +189,7 @@
                     </div>
 
                     <div class="te-bg-orange p-6 flex flex-col items-center">
-                        <img src="https://i.ibb.co/3WdM9T9/TE-Connectivity-Logo-white.jpg" alt="TE Logo White" class="h-8 invert brightness-0">
+                        <img src="/TE_Connectivity_Logo_white.jpg" alt="TE Logo White" class="h-8 object-contain">
                     </div>
 
                     <div class="p-4 flex gap-2 border-t border-gray-100 bg-gray-50">
@@ -175,13 +204,13 @@
                     <div class="p-2 border-b border-gray-100 flex gap-4 text-xs font-semibold text-gray-500">
                         <span>To: support@te.com</span>
                     </div>
-                    <textarea id="reply-input" class="w-full p-4 text-sm outline-none resize-none" rows="4" placeholder="Ask TE.V.A. a question..."></textarea>
+                    <textarea id="reply-input" class="w-full p-4 text-sm outline-none resize-none" rows="4" placeholder="Type your reply here..."></textarea>
                     <div class="flex justify-between p-3 border-t border-gray-100">
                         <div class="flex gap-4 text-gray-400 items-center">
-                            <i class="fas fa-paperclip"></i>
-                            <i class="fas fa-image"></i>
+                            <i class="fas fa-paperclip cursor-pointer hover:text-gray-600"></i>
+                            <i class="fas fa-image cursor-pointer hover:text-gray-600"></i>
                         </div>
-                        <button onclick="sendReply()" id="send-btn" class="outlook-blue text-white px-8 py-1.5 rounded font-semibold text-sm shadow-sm">Send</button>
+                        <button onclick="sendReply()" id="send-btn" class="outlook-blue text-white px-8 py-1.5 rounded font-semibold text-sm shadow-sm hover:bg-blue-700">Send</button>
                     </div>
                 </div>
             </div>
@@ -207,7 +236,6 @@
         function showReplyBox() {
             document.getElementById('reply-box').classList.remove('hidden');
             document.getElementById('reply-input').focus();
-            // Scroll to bottom
             const thread = document.getElementById('reading-pane');
             thread.scrollTop = thread.scrollHeight;
         }
@@ -227,7 +255,6 @@
             document.getElementById('reply-input').value = "";
             document.getElementById('reply-box').classList.add('hidden');
             
-            // Scroll to bottom
             const pane = document.getElementById('reading-pane');
             pane.scrollTop = pane.scrollHeight;
 
@@ -244,18 +271,17 @@
             
             let responseText = "";
             if (step === 1) {
-                responseText = `<div class="font-bold te-orange mb-2">TE.V.A. - Virtual Assistant</div>
+                responseText = `<div class="flex items-center gap-2 mb-2"><div class="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 font-bold border border-orange-200 text-xs">TE</div><div class="font-bold te-orange">TE.V.A. - Virtual Assistant</div></div>
                                 <p class='text-sm leading-relaxed'>Thank you for your question, Lauren. [PLACEHOLDER: AGENT RESPONSE 1 - Detailed technical answer about STRADA Whisper specs]. Is there anything else I can assist with regarding your HALE project?</p>`;
                 step++;
             } else {
-                responseText = `<div class="font-bold te-orange mb-2">TE.V.A. - Virtual Assistant</div>
-                                <p class='text-sm leading-relaxed'>Certainly! [PLACEHOLDER: AGENT RESPONSE 2 - Finalizing details]. I've notified your account lead, David Henderson, to follow up with the formal documentation by EOD.</p>`;
+                responseText = `<div class="flex items-center gap-2 mb-2"><div class="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 font-bold border border-orange-200 text-xs">TE</div><div class="font-bold te-orange">TE.V.A. - Virtual Assistant</div></div>
+                                <p class='text-sm leading-relaxed'>Certainly! [PLACEHOLDER: AGENT RESPONSE 2 - Finalizing details]. I've notified your account lead to follow up with the formal documentation by EOD.</p>`;
             }
 
             agentMsg.innerHTML = responseText;
             thread.appendChild(agentMsg);
             
-            // Scroll to bottom
             const pane = document.getElementById('reading-pane');
             pane.scrollTop = pane.scrollHeight;
         }
