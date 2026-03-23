@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Outlook - Omega Aerospace</title>
+    <title>Outlook - Lauren Bailey (Omega Aerospace)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -11,6 +11,9 @@
         .outlook-bg { background-color: #f3f2f1; }
         .selected-mail { background-color: #edebe9; border-left: 3px solid #0078d4; }
         .unread-dot { width: 8px; height: 8px; background-color: #0078d4; border-radius: 50%; }
+        .te-orange { color: #eb8d2d; }
+        .te-bg-orange { background-color: #eb8d2d; }
+        .te-dark-blue { background-color: #334754; }
     </style>
 </head>
 <body class="outlook-bg h-screen flex flex-col font-sans overflow-hidden">
@@ -18,11 +21,17 @@
     <header class="outlook-blue h-12 flex items-center justify-between px-4 text-white shrink-0">
         <div class="flex items-center gap-4">
             <i class="fas fa-th"></i>
-            <span class="font-semibold">Outlook</span>
+            <span class="font-semibold text-sm">Outlook</span>
+        </div>
+        <div class="flex-1 max-w-xl mx-auto px-4">
+            <div class="bg-white/20 rounded px-3 py-1 flex items-center gap-2">
+                <i class="fas fa-search text-xs"></i>
+                <input type="text" placeholder="Search" class="bg-transparent border-none outline-none text-sm w-full placeholder:text-white/70">
+            </div>
         </div>
         <div class="flex items-center gap-4">
-            <i class="fas fa-search"></i>
-            <div class="w-8 h-8 rounded-full bg-orange-600 flex items-center justify-center text-xs">OA</div>
+            <span class="text-xs hidden md:block">Lauren Bailey</span>
+            <div class="w-8 h-8 rounded-full bg-purple-700 flex items-center justify-center text-xs font-bold border border-white">LB</div>
         </div>
     </header>
 
@@ -34,59 +43,153 @@
             <i class="fas fa-file"></i>
         </nav>
 
-        <aside class="w-48 bg-white border-r border-gray-200 p-4 hidden md:block shrink-0">
-            <button class="w-full bg-blue-600 text-white rounded py-2 mb-4 text-sm font-medium">New mail</button>
+        <aside class="w-48 bg-white border-r border-gray-200 p-4 hidden lg:block shrink-0">
+            <button class="w-full bg-blue-600 text-white rounded py-2 mb-4 text-sm font-medium shadow-sm">New mail</button>
             <ul class="text-sm space-y-3 text-gray-700">
-                <li class="font-bold flex justify-between"><span>Inbox</span><span>1</span></li>
+                <li class="font-bold flex justify-between items-center text-blue-600 bg-blue-50 -mx-4 px-4 py-1 border-r-2 border-blue-600">
+                    <span>Inbox</span><span>1</span>
+                </li>
                 <li>Sent Items</li>
                 <li>Drafts</li>
                 <li>Deleted Items</li>
+                <li class="pt-4 text-xs font-bold text-gray-400 uppercase">Projects</li>
+                <li>HALE UAV Program</li>
+                <li>STRADA Integration</li>
             </ul>
         </aside>
 
-        <section class="w-80 bg-white border-r border-gray-200 flex flex-col shrink-0">
-            <div class="p-3 border-b border-gray-200 font-semibold text-sm">Focused</div>
+        <section class="w-80 bg-white border-r border-gray-200 flex flex-col shrink-0 overflow-y-auto">
+            <div class="p-3 border-b border-gray-200 font-semibold text-xs flex gap-4">
+                <span class="border-b-2 border-blue-600 pb-1">Focused</span>
+                <span class="text-gray-400">Other</span>
+            </div>
+
             <div id="email-item" onclick="openEmail()" class="p-4 border-b border-gray-100 cursor-pointer hover:bg-gray-50 flex flex-col gap-1 relative">
                 <div id="unread-indicator" class="unread-dot absolute left-1 top-6"></div>
                 <div class="flex justify-between items-center">
                     <span id="sender-name" class="font-bold text-sm text-blue-600">TE.V.A. - TE Connectivity</span>
                     <span class="text-xs text-gray-400">10:45 AM</span>
                 </div>
-                <div class="text-xs font-semibold truncate">Thank you for your recent order with TE Connectivity</div>
-                <div class="text-xs text-gray-500 line-clamp-2">Placeholder: Hello Omega Aerospace, we are processing your order...</div>
+                <div class="text-xs font-semibold truncate">Implementation Phase: STRADA Whisper 100 Ohm</div>
+                <div class="text-xs text-gray-500 line-clamp-2">Access your technical integration kit and thermal modeling data.</div>
+            </div>
+
+            <div class="p-4 border-b border-gray-100 cursor-pointer hover:bg-gray-50 flex flex-col gap-1 opacity-70">
+                <div class="flex justify-between items-center">
+                    <span class="font-semibold text-sm text-gray-800">David Henderson (TE)</span>
+                    <span class="text-xs text-gray-400">Yesterday</span>
+                </div>
+                <div class="text-xs truncate">Following up: STRADA Whisper 100 Ohm Specs...</div>
+            </div>
+
+            <div class="p-4 border-b border-gray-100 cursor-pointer hover:bg-gray-50 flex flex-col gap-1 opacity-70">
+                <div class="flex justify-between items-center">
+                    <span class="font-semibold text-sm text-gray-800">Internal: HALE Project Lead</span>
+                    <span class="text-xs text-gray-400">Yesterday</span>
+                </div>
+                <div class="text-xs truncate">UAV Wing Stress Test Results - Revision 4</div>
+            </div>
+
+            <div class="p-4 border-b border-gray-100 cursor-pointer hover:bg-gray-50 flex flex-col gap-1 opacity-70">
+                <div class="flex justify-between items-center">
+                    <span class="font-semibold text-sm text-gray-800">FAA Compliance Office</span>
+                    <span class="text-xs text-gray-400">Oct 24</span>
+                </div>
+                <div class="text-xs truncate">Submission #8821: High-Altitude Testing Protocols</div>
             </div>
         </section>
 
-        <main id="reading-pane" class="flex-1 bg-white flex flex-col hidden">
+        <main id="reading-pane" class="flex-1 bg-white flex flex-col hidden overflow-y-auto">
             <div class="p-6 border-b border-gray-200">
-                <h2 class="text-xl font-light mb-4">Thank you for your recent order with TE Connectivity</h2>
+                <div class="flex justify-between items-start mb-4">
+                    <h2 class="text-xl font-semibold">Implementation Phase: STRADA Whisper 100 Ohm</h2>
+                    <div class="flex gap-4 text-gray-500">
+                        <i class="fas fa-reply cursor-pointer hover:text-blue-600" onclick="showReplyBox()"></i>
+                        <i class="fas fa-reply-all"></i>
+                        <i class="fas fa-share-square"></i>
+                    </div>
+                </div>
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold">TE</div>
+                    <div class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 font-bold border border-orange-200">TE</div>
                     <div>
-                        <div class="text-sm font-bold">TE.V.A. - TE Connectivity's Virtual Assistant</div>
-                        <div class="text-xs text-gray-500">To: Omega Aerospace Procurement</div>
+                        <div class="text-sm font-bold">TE.V.A. - TE Connectivity's Virtual Assistant <span class="text-gray-400 font-normal ml-2">&lt;support@te.com&gt;</span></div>
+                        <div class="text-xs text-gray-500">To: Lauren Bailey &lt;lauren.bailey@omegaaero.com&gt;</div>
                     </div>
                 </div>
             </div>
 
-            <div id="thread" class="flex-1 overflow-y-auto p-6 space-y-6">
-                <div class="text-sm text-gray-800">
-                    [PLACEHOLDER: INITIAL MARKETING CLOUD POST-PURCHASE CONTENT HERE]
+            <div id="thread" class="flex-1 overflow-y-auto p-0 flex flex-col">
+                <div id="original-email" class="max-w-[600px] mx-auto bg-white border border-gray-100 shadow-sm my-4">
+                    <div class="p-6 text-center border-b border-gray-50">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/TE_Connectivity_logo.svg" alt="TE Logo" class="h-10 mx-auto">
+                    </div>
+                    
+                    <div class="p-8">
+                        <h1 class="text-2xl font-bold text-gray-800 mb-4">Hi Lauren,</h1>
+                        <p class="text-lg font-semibold text-gray-700 mb-4 leading-snug">Thank you for choosing TE Connect and for your recent purchase! We're thrilled to have you on board.</p>
+                        <p class="text-sm text-gray-600 mb-6 leading-relaxed">If you have any questions or need assistance, our customer care team is here to help. You can just <strong>reply to this message</strong> with your question, or reach us at <strong>+1 800 522 6752</strong>, <strong>online chat</strong>, or <strong>support@te.com</strong></p>
+
+                        <div class="flex gap-6 border-t border-b border-dashed border-gray-300 py-6 mb-6">
+                            <div class="w-1/2">
+                                <img src="https://i.ibb.co/Lkhm729/STRADA-hero-product-master.png" alt="STRADA Whisper" class="w-full rounded shadow-sm">
+                            </div>
+                            <div class="w-1/2">
+                                <h3 class="font-bold text-lg mb-2">STRADA Whisper</h3>
+                                <p class="text-xs text-gray-600 leading-relaxed mb-4">Congratulations on selecting the STRADA Whisper R-Series for the Omega Aerospace HALE UAV. Securing 56 Gbps signal integrity in a high-vibration, unpressurized environment is a critical milestone for your system architecture.</p>
+                                <button class="te-bg-orange text-white px-4 py-2 rounded text-xs font-bold uppercase tracking-wider">Product Details</button>
+                            </div>
+                        </div>
+
+                        <div class="te-dark-blue p-6 rounded-sm text-white">
+                            <h3 class="text-center font-bold text-lg mb-6">Design & Simulation Assets</h3>
+                            <div class="space-y-3">
+                                <div class="bg-white p-4 rounded text-gray-800">
+                                    <p class="font-bold text-sm">High-Speed Layout Guide:</p>
+                                    <p class="text-xs">Precision routing specifications to maintain 100 Ohm differential impedance across the backplane.</p>
+                                </div>
+                                <div class="bg-white p-4 rounded text-gray-800">
+                                    <p class="font-bold text-sm">3D CAD Models (STEP):</p>
+                                    <p class="text-xs">Dimensional files for immediate mechanical fit-check within your chassis.</p>
+                                </div>
+                                <div class="bg-white p-4 rounded text-gray-800">
+                                    <p class="font-bold text-sm">Thermal Modeling Data:</p>
+                                    <p class="text-xs">FloTHERM/ICEPAK profiles for heat dissipation at high-altitude atmospheric pressures.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="te-bg-orange p-6 flex flex-col items-center">
+                        <img src="https://i.ibb.co/3WdM9T9/TE-Connectivity-Logo-white.jpg" alt="TE Logo White" class="h-8 invert brightness-0">
+                    </div>
+
+                    <div class="p-4 flex gap-2 border-t border-gray-100 bg-gray-50">
+                        <button onclick="showReplyBox()" class="flex items-center gap-2 border border-gray-300 px-4 py-1.5 rounded text-sm hover:bg-gray-100"><i class="fas fa-reply"></i> Reply</button>
+                        <button class="flex items-center gap-2 border border-gray-300 px-4 py-1.5 rounded text-sm hover:bg-gray-100"><i class="fas fa-share"></i> Forward</button>
+                    </div>
                 </div>
             </div>
 
-            <div class="p-4 border-t border-gray-200 bg-gray-50">
-                <div id="reply-container" class="bg-white border border-gray-300 rounded p-2">
-                    <textarea id="reply-input" class="w-full p-2 text-sm outline-none resize-none" rows="3" placeholder="Type your reply here..."></textarea>
-                    <div class="flex justify-end p-2 border-t border-gray-100 mt-2">
-                        <button onclick="sendReply()" id="send-btn" class="outlook-blue text-white px-6 py-1 rounded text-sm hover:bg-blue-700">Send</button>
+            <div id="reply-box" class="p-4 border-t border-gray-200 bg-gray-50 hidden">
+                <div class="max-w-4xl mx-auto bg-white border border-gray-300 shadow-lg rounded">
+                    <div class="p-2 border-b border-gray-100 flex gap-4 text-xs font-semibold text-gray-500">
+                        <span>To: support@te.com</span>
+                    </div>
+                    <textarea id="reply-input" class="w-full p-4 text-sm outline-none resize-none" rows="4" placeholder="Ask TE.V.A. a question..."></textarea>
+                    <div class="flex justify-between p-3 border-t border-gray-100">
+                        <div class="flex gap-4 text-gray-400 items-center">
+                            <i class="fas fa-paperclip"></i>
+                            <i class="fas fa-image"></i>
+                        </div>
+                        <button onclick="sendReply()" id="send-btn" class="outlook-blue text-white px-8 py-1.5 rounded font-semibold text-sm shadow-sm">Send</button>
                     </div>
                 </div>
             </div>
         </main>
 
-        <div id="empty-state" class="flex-1 flex flex-center items-center justify-center text-gray-400 italic">
-            Select an item to read
+        <div id="empty-state" class="flex-1 flex flex-col items-center justify-center text-gray-400">
+            <i class="fas fa-envelope-open-text text-6xl mb-4 opacity-20"></i>
+            <p class="italic">Select an item to read</p>
         </div>
     </div>
 
@@ -101,53 +204,60 @@
             document.getElementById('reading-pane').classList.remove('hidden');
         }
 
+        function showReplyBox() {
+            document.getElementById('reply-box').classList.remove('hidden');
+            document.getElementById('reply-input').focus();
+            // Scroll to bottom
+            const thread = document.getElementById('reading-pane');
+            thread.scrollTop = thread.scrollHeight;
+        }
+
         function sendReply() {
             const text = document.getElementById('reply-input').value;
             if (!text.trim()) return;
 
-            // Add User Message to Thread
             const thread = document.getElementById('thread');
+            
+            // User Message Bubble
             const userMsg = document.createElement('div');
-            userMsg.className = "p-4 bg-gray-50 border-l-4 border-gray-300 text-sm";
-            userMsg.innerHTML = `<strong>You</strong><br>${text}`;
+            userMsg.className = "max-w-[500px] ml-auto mr-10 my-4 p-4 bg-gray-100 border-r-4 border-blue-500 text-sm shadow-sm rounded-l-lg";
+            userMsg.innerHTML = `<div class="font-bold text-blue-600 mb-1">Lauren Bailey</div>${text}`;
             thread.appendChild(userMsg);
 
-            // Clear Input
             document.getElementById('reply-input').value = "";
-            document.getElementById('send-btn').innerText = "Sending...";
-            document.getElementById('send-btn').disabled = true;
-
+            document.getElementById('reply-box').classList.add('hidden');
+            
             // Scroll to bottom
-            thread.scrollTop = thread.scrollHeight;
+            const pane = document.getElementById('reading-pane');
+            pane.scrollTop = pane.scrollHeight;
 
-            // Simulate Agent Delay (3 seconds)
+            // Agent Response Delay
             setTimeout(() => {
                 triggerAgentResponse();
-            }, 3000);
+            }, 2500);
         }
 
         function triggerAgentResponse() {
             const thread = document.getElementById('thread');
             const agentMsg = document.createElement('div');
-            agentMsg.className = "p-4 bg-blue-50 border-l-4 border-blue-500 text-sm animate-pulse";
+            agentMsg.className = "max-w-[500px] mr-auto ml-10 my-4 p-6 bg-white border border-gray-200 shadow-md rounded-r-lg relative";
             
             let responseText = "";
             if (step === 1) {
-                responseText = "<strong>TE.V.A.</strong><br>[PLACEHOLDER: AGENT RESPONSE 1 - Responding to your first inquiry...]";
+                responseText = `<div class="font-bold te-orange mb-2">TE.V.A. - Virtual Assistant</div>
+                                <p class='text-sm leading-relaxed'>Thank you for your question, Lauren. [PLACEHOLDER: AGENT RESPONSE 1 - Detailed technical answer about STRADA Whisper specs]. Is there anything else I can assist with regarding your HALE project?</p>`;
                 step++;
             } else {
-                responseText = "<strong>TE.V.A.</strong><br>[PLACEHOLDER: AGENT RESPONSE 2 - Finalizing our conversation...]";
+                responseText = `<div class="font-bold te-orange mb-2">TE.V.A. - Virtual Assistant</div>
+                                <p class='text-sm leading-relaxed'>Certainly! [PLACEHOLDER: AGENT RESPONSE 2 - Finalizing details]. I've notified your account lead, David Henderson, to follow up with the formal documentation by EOD.</p>`;
             }
 
             agentMsg.innerHTML = responseText;
-            agentMsg.classList.remove('animate-pulse');
             thread.appendChild(agentMsg);
             
-            document.getElementById('send-btn').innerText = "Send";
-            document.getElementById('send-btn').disabled = false;
-            
             // Scroll to bottom
-            thread.scrollTop = thread.scrollHeight;
+            const pane = document.getElementById('reading-pane');
+            pane.scrollTop = pane.scrollHeight;
         }
     </script>
 </body>
