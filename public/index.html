@@ -143,7 +143,7 @@
                     </div>
                 </div>
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-full te-bg-orange flex items-center justify-center text-white font-bold border border-orange-200">LB</div>
+                    <div class="w-10 h-10 rounded-full te-bg-orange flex items-center justify-center text-white font-bold border border-orange-200">TE</div>
                     <div>
                         <div class="text-sm font-bold">TE Store <span class="text-gray-400 font-normal ml-2">&lt;shop@te.com&gt;</span></div>
                         <div class="text-xs text-gray-500">To: Lauren Bailey &lt;lauren.bailey@omegaaero.com&gt;</div>
@@ -154,8 +154,8 @@
             <div id="thread" class="flex-1 p-0 flex flex-col bg-gray-50">
                 <div id="original-email" class="max-w-[600px] mx-auto bg-white border border-gray-100 shadow-lg my-8 rounded overflow-hidden">
                     
-                    <div class="te-bg-orange p-12 text-center border-b border-orange-100">
-                        <img src="/TE_Connectivity_Logo_white.jpg" alt="TE Connectivity" class="h-30 mx-auto object-contain block">
+                    <div class="bg-white p-8 text-center border-b border-gray-100">
+                        <img src="/TE_Connectivity_logo_NEW.png" alt="TE Connectivity" class="h-16 mx-auto object-contain block">
                     </div>
                     
                     <div class="p-10">
@@ -188,13 +188,13 @@
                                 <div class="bg-white p-5 rounded text-gray-800 shadow-sm">
                                     <p class="font-bold text-sm mb-1">Thermal Modeling Data:</p>
                                     <p class="text-xs text-gray-600 leading-relaxed">FloTHERM/ICEPAK profiles for heat dissipation at high-altitude pressures.</p>
-                                }
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="bg-white p-6 flex flex-col items-center border-t border-gray-100">
-                        <img src="/TE_Connectivity_logo_NEW.png" alt="TE Logo Orange" class="h-10 mx-auto object-contain">
+                    <div class="te-bg-orange p-8 flex flex-col items-center border-t border-orange-200">
+                        <img src="/TE_Connectivity_Logo_white.jpg" alt="TE Logo White" class="h-10 mx-auto object-contain block">
                     </div>
 
                     <div class="p-5 flex gap-3 border-t border-gray-100 bg-gray-50 rounded-b">
@@ -204,14 +204,14 @@
                 </div>
             </div>
 
-            <div id="reply-box" class="p-6 border-t border-gray-200 bg-gray-50 hidden shadow-inner sticky bottom-0">
+            <div id="reply-box" class="p-6 border-t border-gray-200 bg-gray-50 hidden shadow-inner sticky bottom-0 z-20">
                 <div class="max-w-4xl mx-auto bg-white border border-gray-300 shadow-2xl rounded-lg">
                     <div class="p-3 border-b border-gray-100 flex gap-4 text-xs font-semibold text-gray-600">
-                        <span>To: shop@te.com</span>
+                        <span class="text-blue-600 font-bold">To: teva@te.com</span>
                         <span class="text-gray-300">|</span>
                         <span>Cc: support@te.com</span>
                     </div>
-                    <textarea id="reply-input" class="w-full p-5 text-sm outline-none resize-none focus:ring-0" rows="5" placeholder="Type your reply here..."></textarea>
+                    <textarea id="reply-input" class="w-full p-5 text-sm outline-none resize-none focus:ring-0" rows="4" placeholder="Type your reply to TE.V.A. here..."></textarea>
                     <div class="flex justify-between p-4 border-t border-gray-100 bg-gray-50 rounded-b-lg">
                         <div class="flex gap-5 text-gray-400 items-center">
                             <i class="fas fa-paperclip cursor-pointer hover:text-gray-600"></i>
@@ -233,7 +233,6 @@
         };
 
         function openEmail() {
-            // Logic to handle if we ever go back to empty state
             document.getElementById('email-item').classList.add('selected-mail');
             document.getElementById('unread-indicator').classList.add('hidden');
             document.getElementById('sender-name').classList.remove('text-blue-600');
@@ -254,8 +253,8 @@
             
             // User Message Bubble
             const userMsg = document.createElement('div');
-            userMsg.className = "max-w-[500px] ml-auto mr-10 my-6 p-5 bg-blue-50 border-l-4 border-blue-500 text-sm shadow rounded-lg rounded-br-none";
-            userMsg.innerHTML = `<div class="font-bold text-blue-700 mb-1.5">Lauren Bailey</div>${text}`;
+            userMsg.className = "max-w-[600px] ml-auto mr-10 my-6 p-5 bg-blue-50 border-l-4 border-blue-500 text-sm shadow rounded-lg rounded-br-none";
+            userMsg.innerHTML = `<div class="font-bold text-blue-700 mb-2">Lauren Bailey</div><p class="leading-relaxed whitespace-pre-wrap">${text}</p>`;
             thread.appendChild(userMsg);
 
             document.getElementById('reply-input').value = "";
@@ -273,18 +272,28 @@
         function triggerAgentResponse() {
             const thread = document.getElementById('thread');
             const agentMsg = document.createElement('div');
-            agentMsg.className = "max-w-[500px] mr-auto ml-10 my-6 p-7 bg-white border border-gray-200 shadow-xl rounded-lg rounded-bl-none relative";
+            agentMsg.className = "max-w-[600px] mr-auto ml-10 my-6 p-7 bg-white border border-gray-200 shadow-xl rounded-lg rounded-bl-none relative";
             
             let responseText = "";
-            const avatar = `<div class="w-8 h-8 rounded-full te-bg-orange flex items-center justify-center text-white font-bold border border-orange-200 text-xs shrink-0">TE</div>`;
+            const avatar = `<div class="w-8 h-8 rounded-full te-bg-orange flex items-center justify-center text-white font-bold border border-orange-200 text-xs shrink-0 shadow-sm">TE</div>`;
 
             if (step === 1) {
-                responseText = `<div class="flex items-center gap-3 mb-4">${avatar}<div class="font-bold te-orange">TE.V.A. - Virtual Assistant</div></div>
-                                <p class='text-sm leading-relaxed text-gray-700'>Thank you for your question, Lauren. [PLACEHOLDER: AGENT RESPONSE 1 - Detailed technical answer about STRADA Whisper specs]. Is there anything else I can assist with regarding your HALE project?</p>`;
+                responseText = `
+                    <div class="flex items-center gap-3 mb-5">${avatar}<div class="font-bold te-orange text-base">TE.V.A. - Virtual Assistant</div></div>
+                    <p class='text-sm leading-relaxed text-gray-700 mb-4'>That is a sharp catch, Lauren—physics definitely behaves differently at the 'edge.'</p>
+                    <p class='text-sm leading-relaxed text-gray-700 mb-4'>At 60,000 feet, the reduced air density means your convective cooling efficiency drops by about 50-60% compared to sea level. For the STRADA Whisper 100 Ohm connectors, we typically recommend a current derating of approximately 20% to maintain a safe 30°C T-rise in unpressurized HALE environments.</p>
+                    <p class='text-sm leading-relaxed text-gray-700 mb-4'>I’ve included a link to our <a href="#" class="text-blue-600 underline font-medium">High-Altitude Thermal Performance Map</a>. It includes the specific derating curves for your exact part number at various atmospheric pressures.</p>
+                    <p class='text-sm leading-relaxed text-gray-700 mb-4'>Pro-tip: Many of our UAV partners use our 'C-shaped' shielding as a secondary heat-sink path. Would you like me to send over a white paper on utilizing the connector's ground plane for passive thermal dissipation?</p>
+                    <p class='text-sm leading-relaxed text-gray-700 mb-5'>If there is anything else I can help with, please let me know.</p>
+                    <p class='text-xs leading-relaxed text-gray-400 italic border-t border-gray-100 pt-3'>P.S. You can also reply to this email for customer care, to speak with an engineer, or to make another purchase.</p>
+                `;
                 step++;
             } else {
-                responseText = `<div class="flex items-center gap-3 mb-4">${avatar}<div class="font-bold te-orange">TE.V.A. - Virtual Assistant</div></div>
-                                <p class='text-sm leading-relaxed text-gray-700'>Certainly! [PLACEHOLDER: AGENT RESPONSE 2 - Finalizing details]. I've notified your account lead to follow up with the formal documentation by EOD.</p>`;
+                responseText = `
+                    <div class="flex items-center gap-3 mb-5">${avatar}<div class="font-bold te-orange text-base">TE.V.A. - Virtual Assistant</div></div>
+                    <p class='text-sm leading-relaxed text-gray-700 mb-6'>I have added 10 STRADA Whisper High Speed Backplane Connectors to your cart in the TE Store.</p>
+                    <button class="te-bg-orange text-white px-8 py-2.5 rounded text-sm font-bold shadow-md hover:bg-orange-600 transition-colors uppercase tracking-wide">Go To My Cart</button>
+                `;
             }
 
             agentMsg.innerHTML = responseText;
