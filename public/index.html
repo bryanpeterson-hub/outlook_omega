@@ -102,6 +102,33 @@
                 <div class="text-xs truncate text-gray-600">Action Required: Annual Data Handling Certification</div>
                 <div class="text-xs text-gray-500 line-clamp-1">Please complete your mandatory training...</div>
             </div>
+
+            <div class="p-4 border-b border-gray-100 cursor-pointer hover:bg-gray-50 flex flex-col gap-1 opacity-70">
+                <div class="flex justify-between items-center">
+                    <span class="font-semibold text-sm text-gray-800">Finance Dept</span>
+                    <span class="text-xs text-gray-400">Monday</span>
+                </div>
+                <div class="text-xs truncate text-gray-600">Q3 R&D Budget Allocation - Approved</div>
+                <div class="text-xs text-gray-500 line-clamp-1">The funding for the new sensor array...</div>
+            </div>
+
+            <div class="p-4 border-b border-gray-100 cursor-pointer hover:bg-gray-50 flex flex-col gap-1 opacity-70">
+                <div class="flex justify-between items-center">
+                    <span class="font-semibold text-sm text-gray-800">Internal: HALE Lead</span>
+                    <span class="text-xs text-gray-400">Oct 24</span>
+                </div>
+                <div class="text-xs truncate text-gray-600">UAV Wing Stress Test Results - Revision 4</div>
+                <div class="text-xs text-gray-500 line-clamp-1">Team, the wind tunnel data is looking...</div>
+            </div>
+
+            <div class="p-4 border-b border-gray-100 cursor-pointer hover:bg-gray-50 flex flex-col gap-1 opacity-70">
+                <div class="flex justify-between items-center">
+                    <span class="font-semibold text-sm text-gray-800">FAA Compliance Office</span>
+                    <span class="text-xs text-gray-400">Oct 22</span>
+                </div>
+                <div class="text-xs truncate text-gray-600">Submission #8821: Testing Protocols</div>
+                <div class="text-xs text-gray-500 line-clamp-1">Your preliminary flight paths...</div>
+            </div>
         </section>
 
         <main id="reading-pane" class="flex-1 bg-white flex flex-col overflow-y-auto custom-scrollbar relative">
@@ -134,7 +161,7 @@
                     <div class="max-w-[700px] mx-auto my-8 border border-gray-200 shadow-lg rounded overflow-hidden">
                         
                         <div class="bg-white p-6 text-center border-b border-gray-100">
-                            <img src="/TE_Connectivity_Logo_white.jpg" alt="TE Connectivity" class="h-8 mx-auto object-contain block">
+                            <img src="/TE_Connectivity_Logo_white.jpg" alt="TE Connectivity" class="w-[250px] h-auto mx-auto object-contain block">
                         </div>
                         
                         <div class="p-10 bg-white">
@@ -264,6 +291,17 @@
 
             // Format user text to preserve line breaks
             const formattedText = text.replace(/\n/g, '<br>');
+            
+            // Lauren's Signature
+            const signatureHTML = `
+                <br><br>
+                <div class="text-xs text-gray-500 mt-2">
+                    <p class="font-bold text-gray-700 text-sm">Lauren Bailey</p>
+                    <p>Lead Systems Architect</p>
+                    <p>Omega Aerospace</p>
+                    <p><a href="mailto:lauren.bailey@omegaaero.com" class="text-blue-600 hover:underline">lauren.bailey@omegaaero.com</a></p>
+                </div>
+            `;
 
             // Create User Email Block
             const userEmailHTML = createEmailHTML(
@@ -271,7 +309,7 @@
                 "lauren.bailey@omegaaero.com", 
                 "teva@te.com", 
                 "Just now", 
-                `<p class="whitespace-pre-wrap">${formattedText}</p>`, 
+                `<p class="whitespace-pre-wrap">${formattedText}</p>${signatureHTML}`, 
                 false
             );
 
@@ -293,6 +331,19 @@
         function triggerAgentResponse() {
             let responseContent = "";
             let snippet = "";
+            
+            // TE.V.A. Signature block (appended to every agent response)
+            const agentSignatureHTML = `
+                <br><br>
+                <div class="text-xs text-gray-500 mt-2 border-t border-gray-100 pt-3">
+                    <p class="font-bold text-gray-700 text-sm">TE.V.A.</p>
+                    <p>TE's Virtual Assistant</p>
+                    <br>
+                    <p>Call Us: <a href="tel:+18005226752" class="text-blue-600 hover:underline">+1 800 522 6752</a></p>
+                    <p>Chat with Us: <a href="https://www.te.com" class="text-blue-600 hover:underline" target="_blank">te.com</a></p>
+                    <p>Email Us: <a href="mailto:teva@te.com" class="text-blue-600 hover:underline">teva@te.com</a></p>
+                </div>
+            `;
 
             if (step === 1) {
                 responseContent = `
@@ -301,15 +352,15 @@
                     <p class='mb-4'>I’ve included a link to our <a href="#" class="text-blue-600 underline font-medium">High-Altitude Thermal Performance Map</a>. It includes the specific derating curves for your exact part number at various atmospheric pressures.</p>
                     <p class='mb-4'>Pro-tip: Many of our UAV partners use our 'C-shaped' shielding as a secondary heat-sink path. Would you like me to send over a white paper on utilizing the connector's ground plane for passive thermal dissipation?</p>
                     <p class='mb-5'>If there is anything else I can help with, please let me know.</p>
-                    <p class='text-xs text-gray-400 italic border-t border-gray-100 pt-3'>P.S. You can also reply to this email for customer care, to speak with an engineer, or to make another purchase.</p>
-                `;
+                    <p class='text-xs text-gray-400 italic mb-2'>P.S. You can also reply to this email for customer care, to speak with an engineer, or to make another purchase.</p>
+                ` + agentSignatureHTML;
                 snippet = "That is a sharp catch, Lauren—physics definitely behaves differently...";
                 step++;
             } else {
                 responseContent = `
                     <p class='mb-6'>I have added 10 STRADA Whisper High Speed Backplane Connectors to your cart in the TE Store.</p>
                     <button class="te-bg-orange text-white px-8 py-2.5 rounded text-sm font-bold shadow-md hover:bg-orange-600 transition-colors uppercase tracking-wide">Go To My Cart</button>
-                `;
+                ` + agentSignatureHTML;
                 snippet = "I have added 10 STRADA Whisper High Speed Backplane Connectors to your cart...";
             }
 
