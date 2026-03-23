@@ -14,6 +14,10 @@
         .te-orange { color: #eb8d2d; }
         .te-bg-orange { background-color: #eb8d2d; }
         .te-dark-blue { background-color: #334754; }
+        /* Simple scrollbar styling */
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #dcdadb; border-radius: 3px; }
     </style>
 </head>
 <body class="outlook-bg h-screen flex flex-col font-sans overflow-hidden">
@@ -64,7 +68,7 @@
                 <span class="text-gray-400">Other</span>
             </div>
 
-            <div id="email-item" onclick="openEmail()" class="p-4 border-b border-gray-100 cursor-pointer hover:bg-gray-50 flex flex-col gap-1 relative">
+            <div id="email-item" onclick="openEmail()" class="p-4 border-b border-gray-100 cursor-pointer hover:bg-gray-50 flex flex-col gap-1 relative selected-mail">
                 <div id="unread-indicator" class="unread-dot absolute left-1 top-6"></div>
                 <div class="flex justify-between items-center">
                     <span id="sender-name" class="font-bold text-sm text-blue-600">TE Store</span>
@@ -76,10 +80,10 @@
 
             <div class="p-4 border-b border-gray-100 cursor-pointer hover:bg-gray-50 flex flex-col gap-1 opacity-70">
                 <div class="flex justify-between items-center">
-                    <span class="font-semibold text-sm text-gray-800 truncate">TE.V.A. - TE Connectivity's Virtual Assistant</span>
+                    <span class="font-semibold text-sm text-gray-800 truncate">TE.V.A. - Virtual Assistant</span>
                     <span class="text-xs text-gray-400 shrink-0 ml-2">Yesterday</span>
                 </div>
-                <div class="text-xs truncate">Following up: STRADA Whisper 100 Ohm Specs for Omega Aerospace HALE Project</div>
+                <div class="text-xs truncate text-gray-600">Following up: STRADA Whisper 100 Ohm Specs for Omega Aerospace HALE Project</div>
             </div>
 
             <div class="p-4 border-b border-gray-100 cursor-pointer hover:bg-gray-50 flex flex-col gap-1 opacity-70">
@@ -87,17 +91,17 @@
                     <span class="font-semibold text-sm text-gray-800">Marcus Vance</span>
                     <span class="text-xs text-gray-400">Yesterday</span>
                 </div>
-                <div class="text-xs truncate">RE: Airframe structural tolerance review</div>
-                <div class="text-xs text-gray-500 line-clamp-1">Lauren, I've attached the latest CAD models for the payload bay...</div>
+                <div class="text-xs truncate text-gray-600">RE: Airframe structural tolerance review</div>
+                <div class="text-xs text-gray-500 line-clamp-1">Lauren, I've attached the latest CAD models...</div>
             </div>
 
             <div class="p-4 border-b border-gray-100 cursor-pointer hover:bg-gray-50 flex flex-col gap-1 opacity-70">
                 <div class="flex justify-between items-center">
-                    <span class="font-semibold text-sm text-gray-800">IT Security & Compliance</span>
+                    <span class="font-semibold text-sm text-gray-800">IT Security Compliance</span>
                     <span class="text-xs text-gray-400">Tuesday</span>
                 </div>
-                <div class="text-xs truncate">Action Required: Annual Data Handling Certification</div>
-                <div class="text-xs text-gray-500 line-clamp-1">Please complete your mandatory training by end of month.</div>
+                <div class="text-xs truncate text-gray-600">Action Required: Annual Data Handling Certification</div>
+                <div class="text-xs text-gray-500 line-clamp-1">Please complete your mandatory training...</div>
             </div>
 
             <div class="p-4 border-b border-gray-100 cursor-pointer hover:bg-gray-50 flex flex-col gap-1 opacity-70">
@@ -105,17 +109,17 @@
                     <span class="font-semibold text-sm text-gray-800">Finance Dept</span>
                     <span class="text-xs text-gray-400">Monday</span>
                 </div>
-                <div class="text-xs truncate">Q3 R&D Budget Allocation - Approved</div>
-                <div class="text-xs text-gray-500 line-clamp-1">The funding for the new sensor array prototypes has been cleared.</div>
+                <div class="text-xs truncate text-gray-600">Q3 R&D Budget Allocation - Approved</div>
+                <div class="text-xs text-gray-500 line-clamp-1">The funding for the new sensor array...</div>
             </div>
 
             <div class="p-4 border-b border-gray-100 cursor-pointer hover:bg-gray-50 flex flex-col gap-1 opacity-70">
                 <div class="flex justify-between items-center">
-                    <span class="font-semibold text-sm text-gray-800">Internal: HALE Project Lead</span>
+                    <span class="font-semibold text-sm text-gray-800">Internal: HALE Lead</span>
                     <span class="text-xs text-gray-400">Oct 24</span>
                 </div>
-                <div class="text-xs truncate">UAV Wing Stress Test Results - Revision 4</div>
-                <div class="text-xs text-gray-500 line-clamp-1">Team, the wind tunnel data is looking much better after the dihedral adjustment.</div>
+                <div class="text-xs truncate text-gray-600">UAV Wing Stress Test Results - Revision 4</div>
+                <div class="text-xs text-gray-500 line-clamp-1">Team, the wind tunnel data is looking...</div>
             </div>
 
             <div class="p-4 border-b border-gray-100 cursor-pointer hover:bg-gray-50 flex flex-col gap-1 opacity-70">
@@ -123,13 +127,13 @@
                     <span class="font-semibold text-sm text-gray-800">FAA Compliance Office</span>
                     <span class="text-xs text-gray-400">Oct 22</span>
                 </div>
-                <div class="text-xs truncate">Submission #8821: High-Altitude Testing Protocols</div>
-                <div class="text-xs text-gray-500 line-clamp-1">Your preliminary flight paths have been received and are under review.</div>
+                <div class="text-xs truncate text-gray-600">Submission #8821: Testing Protocols</div>
+                <div class="text-xs text-gray-500 line-clamp-1">Your preliminary flight paths...</div>
             </div>
         </section>
 
-        <main id="reading-pane" class="flex-1 bg-white flex flex-col hidden overflow-y-auto">
-            <div class="p-6 border-b border-gray-200">
+        <main id="reading-pane" class="flex-1 bg-white flex flex-col overflow-y-auto custom-scrollbar">
+            <div class="p-6 border-b border-gray-200 sticky top-0 bg-white z-10 shadow-sm">
                 <div class="flex justify-between items-start mb-4">
                     <h2 class="text-xl font-semibold">Implementation Phase: STRADA Whisper 100 Ohm</h2>
                     <div class="flex gap-4 text-gray-500">
@@ -139,7 +143,7 @@
                     </div>
                 </div>
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 font-bold border border-orange-200">TE</div>
+                    <div class="w-10 h-10 rounded-full te-bg-orange flex items-center justify-center text-white font-bold border border-orange-200">LB</div>
                     <div>
                         <div class="text-sm font-bold">TE Store <span class="text-gray-400 font-normal ml-2">&lt;shop@te.com&gt;</span></div>
                         <div class="text-xs text-gray-500">To: Lauren Bailey &lt;lauren.bailey@omegaaero.com&gt;</div>
@@ -147,97 +151,99 @@
                 </div>
             </div>
 
-            <div id="thread" class="flex-1 overflow-y-auto p-0 flex flex-col">
-                <div id="original-email" class="max-w-[600px] mx-auto bg-white border border-gray-100 shadow-sm my-4">
-                    <div class="p-6 text-center border-b border-gray-50">
-                        <img src="/TE_Connectivity_logo_NEW.png" alt="TE Logo" class="h-10 mx-auto object-contain">
+            <div id="thread" class="flex-1 p-0 flex flex-col bg-gray-50">
+                <div id="original-email" class="max-w-[600px] mx-auto bg-white border border-gray-100 shadow-lg my-8 rounded overflow-hidden">
+                    
+                    <div class="te-bg-orange p-12 text-center border-b border-orange-100">
+                        <img src="/TE_Connectivity_Logo_white.jpg" alt="TE Connectivity" class="h-30 mx-auto object-contain block">
                     </div>
                     
-                    <div class="p-8">
-                        <h1 class="text-2xl font-bold text-gray-800 mb-4">Hi Lauren,</h1>
-                        <p class="text-lg font-semibold text-gray-700 mb-4 leading-snug">Thank you for choosing TE Connect and for your recent purchase! We're thrilled to have you on board.</p>
-                        <p class="text-sm text-gray-600 mb-6 leading-relaxed">If you have any questions or need assistance, our customer care team is here to help. You can just <strong>reply to this message</strong> with your question, or reach us at <strong>+1 800 522 6752</strong>, <strong>online chat</strong>, or <strong>support@te.com</strong></p>
+                    <div class="p-10">
+                        <h1 class="text-2xl font-bold text-gray-800 mb-6">Hi Lauren,</h1>
+                        <p class="text-lg font-semibold text-gray-700 mb-5 leading-snug">Thank you for choosing TE Connectivity and for your recent purchase! We're thrilled to have you on board.</p>
+                        <p class="text-sm text-gray-600 mb-8 leading-relaxed">If you have any questions or need assistance, our customer care team is here to help. You can just <strong>reply to this message</strong> with your question, or reach us at <strong>+1 800 522 6752</strong>, <strong>online chat</strong>, or <strong>support@te.com</strong></p>
 
-                        <div class="flex gap-6 border-t border-b border-dashed border-gray-300 py-6 mb-6">
+                        <div class="flex gap-8 border-t border-b border-dashed border-gray-300 py-8 mb-8 items-center">
                             <div class="w-1/2">
-                                <img src="/STRADA hero-product-master.avif" alt="STRADA Whisper" class="w-full rounded shadow-sm object-cover">
+                                <img src="/STRADA hero-product-master.avif" alt="STRADA Whisper" class="w-full rounded shadow-md object-cover">
                             </div>
                             <div class="w-1/2">
-                                <h3 class="font-bold text-lg mb-2">STRADA Whisper</h3>
-                                <p class="text-xs text-gray-600 leading-relaxed mb-4">Congratulations on selecting the STRADA Whisper R-Series for the Omega Aerospace HALE UAV. Securing 56 Gbps signal integrity in a high-vibration, unpressurized environment is a critical milestone for your system architecture.</p>
-                                <button class="te-bg-orange text-white px-4 py-2 rounded text-xs font-bold uppercase tracking-wider">Product Details</button>
+                                <h3 class="font-bold text-xl mb-3 text-gray-800">STRADA Whisper</h3>
+                                <p class="text-xs text-gray-600 leading-relaxed mb-5">Congratulations on selecting the STRADA Whisper R-Series for the Omega Aerospace HALE UAV. Securing 56 Gbps signal integrity in a high-vibration, unpressurized environment is a critical milestone for your system architecture.</p>
+                                <button class="te-bg-orange text-white px-6 py-2 rounded text-xs font-bold uppercase tracking-wider shadow-sm hover:bg-orange-600">Product Details</button>
                             </div>
                         </div>
 
-                        <div class="te-dark-blue p-6 rounded-sm text-white">
-                            <h3 class="text-center font-bold text-lg mb-6">Design & Simulation Assets</h3>
-                            <div class="space-y-3">
-                                <div class="bg-white p-4 rounded text-gray-800">
-                                    <p class="font-bold text-sm">High-Speed Layout Guide:</p>
-                                    <p class="text-xs">Precision routing specifications to maintain 100 Ohm differential impedance across the backplane.</p>
+                        <div class="te-dark-blue p-8 rounded-sm text-white shadow-inner">
+                            <h3 class="text-center font-bold text-xl mb-8">Design & Simulation Assets</h3>
+                            <div class="space-y-4">
+                                <div class="bg-white p-5 rounded text-gray-800 shadow-sm">
+                                    <p class="font-bold text-sm mb-1">High-Speed Layout Guide:</p>
+                                    <p class="text-xs text-gray-600 leading-relaxed">Precision routing specifications to maintain 100 Ohm differential impedance across the backplane.</p>
                                 </div>
-                                <div class="bg-white p-4 rounded text-gray-800">
-                                    <p class="font-bold text-sm">3D CAD Models (STEP):</p>
-                                    <p class="text-xs">Dimensional files for immediate mechanical fit-check within your chassis.</p>
+                                <div class="bg-white p-5 rounded text-gray-800 shadow-sm">
+                                    <p class="font-bold text-sm mb-1">3D CAD Models (STEP):</p>
+                                    <p class="text-xs text-gray-600 leading-relaxed">Dimensional files for immediate mechanical fit-check within your chassis.</p>
                                 </div>
-                                <div class="bg-white p-4 rounded text-gray-800">
-                                    <p class="font-bold text-sm">Thermal Modeling Data:</p>
-                                    <p class="text-xs">FloTHERM/ICEPAK profiles for heat dissipation at high-altitude atmospheric pressures.</p>
-                                </div>
+                                <div class="bg-white p-5 rounded text-gray-800 shadow-sm">
+                                    <p class="font-bold text-sm mb-1">Thermal Modeling Data:</p>
+                                    <p class="text-xs text-gray-600 leading-relaxed">FloTHERM/ICEPAK profiles for heat dissipation at high-altitude pressures.</p>
+                                }
                             </div>
                         </div>
                     </div>
 
-                    <div class="te-bg-orange p-6 flex flex-col items-center">
-                        <img src="/TE_Connectivity_Logo_white.jpg" alt="TE Logo White" class="h-8 object-contain">
+                    <div class="bg-white p-6 flex flex-col items-center border-t border-gray-100">
+                        <img src="/TE_Connectivity_logo_NEW.png" alt="TE Logo Orange" class="h-10 mx-auto object-contain">
                     </div>
 
-                    <div class="p-4 flex gap-2 border-t border-gray-100 bg-gray-50">
-                        <button onclick="showReplyBox()" class="flex items-center gap-2 border border-gray-300 px-4 py-1.5 rounded text-sm hover:bg-gray-100"><i class="fas fa-reply"></i> Reply</button>
-                        <button class="flex items-center gap-2 border border-gray-300 px-4 py-1.5 rounded text-sm hover:bg-gray-100"><i class="fas fa-share"></i> Forward</button>
+                    <div class="p-5 flex gap-3 border-t border-gray-100 bg-gray-50 rounded-b">
+                        <button onclick="showReplyBox()" class="flex items-center gap-2.5 border border-gray-300 px-5 py-2 rounded text-sm font-medium hover:bg-gray-100 transition-colors shadow-sm bg-white"><i class="fas fa-reply text-gray-500"></i> Reply</button>
+                        <button class="flex items-center gap-2.5 border border-gray-300 px-5 py-2 rounded text-sm font-medium hover:bg-gray-100 transition-colors bg-white"><i class="fas fa-share text-gray-500"></i> Forward</button>
                     </div>
                 </div>
             </div>
 
-            <div id="reply-box" class="p-4 border-t border-gray-200 bg-gray-50 hidden">
-                <div class="max-w-4xl mx-auto bg-white border border-gray-300 shadow-lg rounded">
-                    <div class="p-2 border-b border-gray-100 flex gap-4 text-xs font-semibold text-gray-500">
-                        <span>To: support@te.com</span>
+            <div id="reply-box" class="p-6 border-t border-gray-200 bg-gray-50 hidden shadow-inner sticky bottom-0">
+                <div class="max-w-4xl mx-auto bg-white border border-gray-300 shadow-2xl rounded-lg">
+                    <div class="p-3 border-b border-gray-100 flex gap-4 text-xs font-semibold text-gray-600">
+                        <span>To: shop@te.com</span>
+                        <span class="text-gray-300">|</span>
+                        <span>Cc: support@te.com</span>
                     </div>
-                    <textarea id="reply-input" class="w-full p-4 text-sm outline-none resize-none" rows="4" placeholder="Type your reply here..."></textarea>
-                    <div class="flex justify-between p-3 border-t border-gray-100">
-                        <div class="flex gap-4 text-gray-400 items-center">
+                    <textarea id="reply-input" class="w-full p-5 text-sm outline-none resize-none focus:ring-0" rows="5" placeholder="Type your reply here..."></textarea>
+                    <div class="flex justify-between p-4 border-t border-gray-100 bg-gray-50 rounded-b-lg">
+                        <div class="flex gap-5 text-gray-400 items-center">
                             <i class="fas fa-paperclip cursor-pointer hover:text-gray-600"></i>
                             <i class="fas fa-image cursor-pointer hover:text-gray-600"></i>
                         </div>
-                        <button onclick="sendReply()" id="send-btn" class="outlook-blue text-white px-8 py-1.5 rounded font-semibold text-sm shadow-sm hover:bg-blue-700">Send</button>
+                        <button onclick="sendReply()" id="send-btn" class="outlook-blue text-white px-10 py-2 rounded-full font-semibold text-sm shadow hover:bg-blue-700 transition-colors">Send</button>
                     </div>
                 </div>
             </div>
         </main>
-
-        <div id="empty-state" class="flex-1 flex flex-col items-center justify-center text-gray-400">
-            <i class="fas fa-envelope-open-text text-6xl mb-4 opacity-20"></i>
-            <p class="italic">Select an item to read</p>
-        </div>
     </div>
 
     <script>
         let step = 1;
 
+        // Auto-initialize reading pane view for this version
+        window.onload = function() {
+            document.getElementById('thread').scrollTop = 0;
+        };
+
         function openEmail() {
+            // Logic to handle if we ever go back to empty state
             document.getElementById('email-item').classList.add('selected-mail');
             document.getElementById('unread-indicator').classList.add('hidden');
             document.getElementById('sender-name').classList.remove('text-blue-600');
-            document.getElementById('empty-state').classList.add('hidden');
-            document.getElementById('reading-pane').classList.remove('hidden');
         }
 
         function showReplyBox() {
             document.getElementById('reply-box').classList.remove('hidden');
             document.getElementById('reply-input').focus();
-            const thread = document.getElementById('reading-pane');
-            thread.scrollTop = thread.scrollHeight;
+            const pane = document.getElementById('reading-pane');
+            pane.scrollTop = pane.scrollHeight;
         }
 
         function sendReply() {
@@ -248,8 +254,8 @@
             
             // User Message Bubble
             const userMsg = document.createElement('div');
-            userMsg.className = "max-w-[500px] ml-auto mr-10 my-4 p-4 bg-gray-100 border-r-4 border-blue-500 text-sm shadow-sm rounded-l-lg";
-            userMsg.innerHTML = `<div class="font-bold text-blue-600 mb-1">Lauren Bailey</div>${text}`;
+            userMsg.className = "max-w-[500px] ml-auto mr-10 my-6 p-5 bg-blue-50 border-l-4 border-blue-500 text-sm shadow rounded-lg rounded-br-none";
+            userMsg.innerHTML = `<div class="font-bold text-blue-700 mb-1.5">Lauren Bailey</div>${text}`;
             thread.appendChild(userMsg);
 
             document.getElementById('reply-input').value = "";
@@ -267,16 +273,18 @@
         function triggerAgentResponse() {
             const thread = document.getElementById('thread');
             const agentMsg = document.createElement('div');
-            agentMsg.className = "max-w-[500px] mr-auto ml-10 my-4 p-6 bg-white border border-gray-200 shadow-md rounded-r-lg relative";
+            agentMsg.className = "max-w-[500px] mr-auto ml-10 my-6 p-7 bg-white border border-gray-200 shadow-xl rounded-lg rounded-bl-none relative";
             
             let responseText = "";
+            const avatar = `<div class="w-8 h-8 rounded-full te-bg-orange flex items-center justify-center text-white font-bold border border-orange-200 text-xs shrink-0">TE</div>`;
+
             if (step === 1) {
-                responseText = `<div class="flex items-center gap-2 mb-2"><div class="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 font-bold border border-orange-200 text-xs">TE</div><div class="font-bold te-orange">TE.V.A. - Virtual Assistant</div></div>
-                                <p class='text-sm leading-relaxed'>Thank you for your question, Lauren. [PLACEHOLDER: AGENT RESPONSE 1 - Detailed technical answer about STRADA Whisper specs]. Is there anything else I can assist with regarding your HALE project?</p>`;
+                responseText = `<div class="flex items-center gap-3 mb-4">${avatar}<div class="font-bold te-orange">TE.V.A. - Virtual Assistant</div></div>
+                                <p class='text-sm leading-relaxed text-gray-700'>Thank you for your question, Lauren. [PLACEHOLDER: AGENT RESPONSE 1 - Detailed technical answer about STRADA Whisper specs]. Is there anything else I can assist with regarding your HALE project?</p>`;
                 step++;
             } else {
-                responseText = `<div class="flex items-center gap-2 mb-2"><div class="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 font-bold border border-orange-200 text-xs">TE</div><div class="font-bold te-orange">TE.V.A. - Virtual Assistant</div></div>
-                                <p class='text-sm leading-relaxed'>Certainly! [PLACEHOLDER: AGENT RESPONSE 2 - Finalizing details]. I've notified your account lead to follow up with the formal documentation by EOD.</p>`;
+                responseText = `<div class="flex items-center gap-3 mb-4">${avatar}<div class="font-bold te-orange">TE.V.A. - Virtual Assistant</div></div>
+                                <p class='text-sm leading-relaxed text-gray-700'>Certainly! [PLACEHOLDER: AGENT RESPONSE 2 - Finalizing details]. I've notified your account lead to follow up with the formal documentation by EOD.</p>`;
             }
 
             agentMsg.innerHTML = responseText;
