@@ -1,0 +1,12 @@
+{
+  "name": "outlook-sfmc-prototype",
+  "version": "1.0.0",
+  "description": "Outlook Mockup for SFMC Demo",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
